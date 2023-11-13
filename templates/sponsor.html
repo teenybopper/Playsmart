@@ -1,0 +1,60 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Player Profile Section -->
+        <div class="col-md-6">
+            <h1>Player Profile</h1>
+            <!-- Display player details here -->
+            <div class="card">
+                <div class="container player-profile" style="background-color: #f8f9fa; padding: 20px;">
+                    <h1 class="profile-title" style="text-align: center; margin-bottom: 20px; font-size: 28px;">Player Profile</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Display player details -->
+                            <div class="profile-card" style="background-color: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); display: flex; overflow: hidden;">
+                                <div class="profile-image" style="flex: 1; max-width: 100%; padding: 20px; text-align: center;">
+                                    <img src="{{ profile.image.url }}" alt="Profile Image" style="max-width: 100%; height: auto; border-radius: 50%;">
+                                </div>
+                                <div class="profile-info" style="flex: 2; padding: 20px;">
+                                    <h2 class="profile-name" style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">{{ profile.Name }}</h2>
+                                    <p class="profile-description" style="font-size: 16px; margin-bottom: 15px;"><strong>Description:</strong> {{ profile.description }}</p>
+                                    <p style="font-size: 16px; margin-bottom: 10px;"><strong>Joined:</strong> {{ profile.Joined }}</p>
+                                    <p style="font-size: 16px; margin-bottom: 10px;"><strong>Level:</strong> {{ profile.get_levels_display }}</p>
+                                    <p style="font-size: 16px; margin-bottom: 10px;"><strong>Age:</strong> {{ profile.Age }}</p>
+                                    <p style="font-size: 16px; margin-bottom: 10px;"><strong>Skill:</strong> {{ profile.get_skill_display }}</p>
+                                    <!-- Add more fields as needed -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Coach Actions Section -->
+        <div class="col-md-6">
+            <h1>Coach Actions</h1>
+            <!-- Sponsorship form and message box for the coach -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sponsorship</h5>
+                    <button type="button" class="btn btn-primary" style="margin: 5px;">Sponsor!</button>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Message</h5>
+                    <!-- Add a message box for the coach to write messages to the player -->
+                    <textarea class="form-control" rows="10" placeholder="Write a message to the player"></textarea>
+                    <button type="button" class="btn btn-primary" style="margin: 5px;">Send!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
