@@ -36,7 +36,7 @@ def ProfileView(request, player_id):
         'profile' : profile,
         'pk' : player_id
     }
-    
+    print(context['pk'])
     return render(request, 'profile.html', context)
     
     
@@ -47,6 +47,7 @@ def SponsorPage(request, pk):
     
     context = {
         'profile':profile,
+        'pk' : pk
 
     }    
     return render(request, 'sponsor.html', context)

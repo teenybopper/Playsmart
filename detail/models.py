@@ -1,4 +1,6 @@
 from django.db import models
+from django .contrib.auth.models import AbstractBaseUser, User
+from core.models import UserProfile
 
 # Create your models here.
 
@@ -12,6 +14,7 @@ class category(models.Model):
         return self.name 
     
 class Info(models.Model):
+
     category = models.ForeignKey(category, related_name='Info', on_delete=models.CASCADE)
     Name = models.CharField(max_length=50)
     description = models.TextField(blank = True, null = True)

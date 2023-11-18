@@ -25,7 +25,7 @@
                         <p style="font-size: 16px; margin-bottom: 10px;"><strong>Level:</strong> {{ profile.get_levels_display }}</p>
                         <p style="font-size: 16px; margin-bottom: 10px;"><strong>Age:</strong> {{ profile.Age }}</p>
                         <p style="font-size: 16px; margin-bottom: 10px;"><strong>Skill:</strong> {{ profile.get_skill_display }}</p>
-                        <a href="{% url 'detail:sponsor' pk=pk %}" class="btn btn-primary">Sponsor</a>
+                        <a href="{% url 'detail:sponsor' pk=profile.id %}" class="btn btn-primary">Sponsor</a>
                     </div>
                 </div>
             </div>

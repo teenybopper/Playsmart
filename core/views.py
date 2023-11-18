@@ -1,5 +1,5 @@
 # Create your views here.
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -20,6 +20,8 @@ def HomePage(request):
 
     posts = Post.objects.filter(user__in=following_users).order_by('-timestamp')
     form = PostForm()
+    
+    information = get_object_or_404(Info, id=user_profile.user.id )
 
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -32,9 +34,11 @@ def HomePage(request):
 
     context = {
         'posts': posts,
-        'form': form
+        'form': form,
+        'pk' : user_profile.user.id,
+        'information': information
     }
-    
+    print(posts[0].image.url)
     return render(request, 'home.html', context)
 
 
