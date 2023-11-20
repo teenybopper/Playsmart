@@ -22,6 +22,8 @@ def HomePage(request):
     form = PostForm()
     
     information = get_object_or_404(Info, id=user_profile.user.id )
+    profile_image = information.Profile_Image.url if information.Profile_Image else None
+
 
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -36,9 +38,10 @@ def HomePage(request):
         'posts': posts,
         'form': form,
         'pk' : user_profile.user.id,
-        'information': information
+        'information': information,
+        'profile_image' : profile_image
     }
-    print(posts[0].image.url)
+    
     return render(request, 'home.html', context)
 
 
@@ -47,13 +50,13 @@ def HomePage(request):
 def SignupPage(request):
     if request.method=='POST':
         uname=request.POST.get('username')
-        Name=request.Post.get('name')
+        Name=request.POST.get('name')
         email=request.POST.get('email')
         pass1=request.POST.get('password1')
         pass2=request.POST.get('password2')
         
         
-        if User.ojects.filter(username = uname).exists():
+        if User.objects.filter(username = uname).exists():
             return HttpResponse("Username is already taken.")
         
         if pass1!=pass2:
