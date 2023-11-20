@@ -2,3 +2,8 @@ In a world where technology continually reshapes our lives, we introduce "PlaySm
 
 
 IN MAKING 
+
+
+This is just for the intership purpose where i have not focussed on the frontend and made it just to practice my skill with DJANGO
+
+With future i will make it better, any of your contributions are appreciated 
