@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Post, UserProfile
 from detail.models import category, Info
-from .forms import PostForm, DetailForm
+from .forms import PostForm, DetailForm, UserSearchForm
 
 
 
@@ -33,7 +33,7 @@ def HomePage(request):
             new_post.user = request.user
             new_post.save()
             return redirect('home')
-
+    print(user_profile.user.id)
     context = {
         'posts': posts,
         'form': form,
@@ -110,3 +110,31 @@ def detailPage(request):
         'form' : form
     }
     return render (request,'details.html', context)
+
+
+def Search_View(request):
+    player_id = None
+    form = UserSearchForm()
+    results = []
+    
+    if request.method == 'POST':
+        form = UserSearchForm(request.POST)
+        if form.is_valid():
+            player_id = form.cleaned_data.get('player_id', None)
+            try:
+                player_id = int(player_id)
+            except ValueError:
+                player_id = None
+    
+    if player_id is not None:
+                
+        results = User.objects.filter(username__icontains=player_id)
+    
+    context = {
+        'form': form,
+        'player_id': player_id,
+        'results': results,
+        'pk':6 
+    }
+    
+    return render(request, 'search.html', context)

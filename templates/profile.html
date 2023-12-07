@@ -5,14 +5,8 @@
         <h1 class="profile-title" style="text-align: center; margin-bottom: 20px; font-size: 28px;">Player Profile</h1>
         <div class="row">
             <div class="col-md-6">
-                <!-- Display player details -->
-                {% if user != request.user %}
-                    {% if user in request.user.userprofile.following.all %}
-                        <a href="{% url 'unfollow_user' username=user.username %}">Unfollow</a>
-                    {% else %}
-                        <a href="{% url 'follow_user' username=user.username %}">Follow</a>
-                    {% endif %}
-                {% endif %}
+                
+                
 
                 <div class="profile-card" style="background-color: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); display: flex; overflow: hidden;">
                     <div class="profile-image" style="flex: 1; max-width: 100%; padding: 20px; text-align: center;">
@@ -28,6 +22,13 @@
                         <a href="{% url 'detail:sponsor' pk=profile.id %}" class="btn btn-primary">Sponsor</a>
                     </div>
                 </div>
+                {% if user != request.user %}
+                    {% if user in request.user.userprofile.following.all %}
+                        <a href="{% url 'unfollow_user' username=user.username %}">Unfollow</a>
+                    {% else %}
+                        <a href="{% url 'follow_user' username=user.username %}">Follow</a>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>

@@ -29,6 +29,7 @@ urlpatterns = [
     path('logout/',views.LogoutPage,name='logout'),
     path('api-auth/', include('rest_framework.urls')),
     path('details/', views.detailPage, name = 'detailpage'),
-    path('profile/', include('detail.urls'))
+    path('profile/', include('detail.urls')), 
+    path('search/', views.Search_View, name='user_search')
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
