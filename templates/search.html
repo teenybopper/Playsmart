@@ -1,15 +1,15 @@
 {% extends 'home.html' %}
 
 {% block content %}
-    <form method="get" action="{% url 'user_search' %}">
-        {{ form }}
+    <form method="get" action="/search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
         <button type="submit">Search</button>
     </form>
 
     {% if results %}
         <ul>
             {% for user in results %}
-                <li>{{ user.username }}</li>
+                <li><a href="{% url 'detail:player_profile' player_id=pk %}">{{ user.username }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
@@ -17,4 +17,4 @@
     {% endif %}
 
 
-{% endblock %}
+{% endblock %} 

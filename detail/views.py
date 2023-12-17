@@ -37,7 +37,7 @@ def ProfileView(request, player_id):
         'pk' : player_id
     }
     
-    print(context['pk'])
+    print(player_id)
     return render(request, 'profile.html', context)
     
     

@@ -16,7 +16,6 @@ class DetailForm(forms.ModelForm):
         fields = '__all__'
         
         
-class UserSearchForm(forms.Form):
-    search_query = forms.CharField(label='Search', max_length=100)
+
     
     
